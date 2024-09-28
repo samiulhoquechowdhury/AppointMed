@@ -5,6 +5,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.BrandName {
+    font-family: Caveat;
+}
+
+
 .active hr {
     @apply block
 }
