@@ -29,7 +29,8 @@ To get started with AppointMed, follow these steps:
    ```bash
    git clone https://github.com/yourusername/appointmed.git
    cd appointmed
-2.Install dependencies for both frontend and backend:
+   
+  2.Install dependencies for both frontend and backend:
    
 # Install backend dependencies
 cd backend
