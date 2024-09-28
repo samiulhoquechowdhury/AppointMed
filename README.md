@@ -29,18 +29,16 @@ To get started with AppointMed, follow these steps:
    ```bash
    git clone https://github.com/yourusername/appointmed.git
    cd appointmed
-   
-2. Install dependencies for both frontend and backend:
-   
-# Install backend dependencies
-cd backend
-npm install
 
-# Install frontend dependencies
-cd ../frontend
-npm install
-
-3. Set up environment variables:
+  2. Install dependencies for both frontend and backend:
+   # Install backend dependencies
+   cd backend
+   npm install
+   # Install frontend dependencies
+   cd ../frontend
+   npm install
+   
+   3. Set up environment variables:
 
 Create a .env file in the backend folder.
 Add your MongoDB URI, JWT secret, and other required configurations:
@@ -74,9 +72,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 Made with ❤️ by Samiul Hoque CHowdhury
 
-### Customization
-- Replace `samiulhoquechowdhury` with your GitHub username and update the contact info.
-- Add a logo or images by replacing the placeholder links with your actual assets.
-- Include screenshots of your app after implementing key features.
-
-This README provides a clean and professional presentation for your project!
