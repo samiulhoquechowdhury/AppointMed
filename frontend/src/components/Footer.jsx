@@ -7,7 +7,10 @@ const Footer = () => {
       <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm">
         {/* ---Left Section---- */}
         <div className="">
-          <img className="mb-5" src={assets.logo} alt="" width={60} />
+          <div className="BrandName flex items-center font-bold text-2xl">
+            <img src={assets.logo} alt="logo" width={50} />
+            <span className="ml-3 text-2xl">Appoint-Med</span>
+          </div>
           <p className="w-full md:w-2/3 text-gray-600 leading-6">
             AppointMed is your trusted online solution for hassle-free doctor
             appointments. We connect patients with healthcare professionals,
