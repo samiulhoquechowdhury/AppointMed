@@ -7,9 +7,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .BrandName {
+.BrandName {
     font-family: Caveat;
-} */
+}
 
 /* * {
     font-family: Outfit;

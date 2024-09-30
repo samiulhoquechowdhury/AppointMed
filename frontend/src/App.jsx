@@ -30,7 +30,6 @@ const App = () => {
         <Route path="/my-appointments" element={<MyAppointment />} />
         <Route path="/appointment/:docId" element={<Appointment />} />
       </Routes>
-
       <Footer />
     </div>
   );
