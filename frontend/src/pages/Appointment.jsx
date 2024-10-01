@@ -8,7 +8,7 @@ const Appointment = () => {
   const { doctors, currencySymbol } = useContext(AppContext);
 
   const [docInfo, setDocInfo] = useState(null);
-  const [docSlots, setDocSlot] = useState([]);
+  const [docSlots, setDocSlots] = useState([]);
   const [slotIndex, setSlotIndex] = useState(0);
   const [slotTime, setSlotTime] = useState("");
 
@@ -20,32 +20,57 @@ const Appointment = () => {
   };
 
   const getAvailableslot = async () => {
-    setDocSlot([]);
+    setDocSlots([]);
     let today = new Date();
 
     for (let i = 0; i < 7; i++) {
       //getting date with index
       let currentDate = new Date(today);
-      currentDate.setDate(today.getDay() + i);
+      currentDate.setDate(today.getDate() + i); // Corrected here, using getDate()
 
       //setting end date of the datawith index
       let endTime = new Date();
-      endTime.setDate(today.getDate() + 1);
-      endTime.setHours(21, 0, 0, 0);
+      endTime.setDate(today.getDate() + i); // Fixed to use correct day
+      endTime.setHours(21, 0, 0, 0); // End time 9:00 PM
 
       //setting hours
-      if (today.getDate === currentDate.getDate()) {
+      if (today.getDate() === currentDate.getDate()) {
         currentDate.setHours(
           currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10
         );
-        currentDate.setMinutes;
-        currentDate.getMinutes() > 30 ? 30 : 0;
+        currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
+      } else {
+        currentDate.setHours(10); // Corrected: setting hours instead of date
+        currentDate.setMinutes(0);
       }
+
+      let timeSlots = [];
+
+      while (currentDate < endTime) {
+        let formattedTime = currentDate.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        // time slot to array
+        timeSlots.push({
+          datetime: new Date(currentDate),
+          time: formattedTime,
+        });
+        //increment current time by 30 minutes
+        currentDate.setMinutes(currentDate.getMinutes() + 30);
+      }
+      setDocSlots((prev) => [...prev, timeSlots]);
     }
   };
+
   useEffect(() => {
     fetchDocInfo();
   }, [doctors, docId]);
+
+  useEffect(() => {
+    console.log(docSlots);
+  }, [docSlots]);
+
   return (
     docInfo && (
       <div>
