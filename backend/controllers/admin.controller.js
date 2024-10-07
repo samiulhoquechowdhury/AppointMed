@@ -13,3 +13,5 @@ const addDoctor = async (req, res) => {
     } = req.body();
   } catch (error) {}
 };
+
+export { addDoctor };
