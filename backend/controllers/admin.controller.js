@@ -11,7 +11,9 @@ const addDoctor = async (req, res) => {
       fee,
       address,
     } = req.body();
-  } catch (error) {}
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 
 export { addDoctor };
