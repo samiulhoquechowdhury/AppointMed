@@ -16,6 +16,7 @@ app.use(cors());
 
 // api endpoints
 app.use("/api/admin", adminRouter);
+//localhost:4000/api/admin/add-doctor
 
 app.get("/ping", (req, res) => {
   res.send("pong");
