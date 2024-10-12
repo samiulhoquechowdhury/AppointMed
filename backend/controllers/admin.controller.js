@@ -1,4 +1,7 @@
 import validator from "validator";
+import bcrypt from "bcrypt";
+import { v2 as cloudanary } from "cloudinary";
+
 //api for adding doctors
 const addDoctor = async (req, res) => {
   try {
@@ -44,6 +47,16 @@ const addDoctor = async (req, res) => {
         message: "Please enter a strong password",
       });
     }
+
+    //hashing doctor password
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    // upload images to cloudanary
+    const imageUpload = await cloudanary.uploader.upload(imageFile.path, {
+      resource_type: "image",
+    });
   } catch (error) {
     console.error(error.message);
   }
