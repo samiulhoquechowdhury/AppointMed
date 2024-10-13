@@ -1,6 +1,7 @@
 import validator from "validator";
 import bcrypt from "bcrypt";
 import { v2 as cloudanary } from "cloudinary";
+import doctorModel from "../models/doctor.model.js";
 
 //api for adding doctors
 const addDoctor = async (req, res) => {
@@ -13,7 +14,7 @@ const addDoctor = async (req, res) => {
       degree,
       experience,
       about,
-      fee,
+      fees,
       address,
     } = req.body();
     const imageFile = req.file;
@@ -26,7 +27,7 @@ const addDoctor = async (req, res) => {
       !degree ||
       !experience ||
       !about ||
-      !fee ||
+      !fees ||
       !address
     ) {
       return res.json({ success: false, message: "All fields are required" });
@@ -57,8 +58,28 @@ const addDoctor = async (req, res) => {
     const imageUpload = await cloudanary.uploader.upload(imageFile.path, {
       resource_type: "image",
     });
+    const imageUrl = imageUpload.secure_url;
+
+    const doctorData = {
+      name,
+      email,
+      image: imageUrl,
+      password: hashedPassword,
+      speciality,
+      degree,
+      experience,
+      about,
+      fees,
+      address: JSON.parse(address),
+      date: Date.now(),
+    };
+
+    const newDoctor = new doctorModel(doctorData);
+    await newDoctor.save();
+    res.json({ success: true, message: "Doctor added" });
   } catch (error) {
     console.error(error.message);
+    res.json({ success: false, message: error.message });
   }
 };
 
