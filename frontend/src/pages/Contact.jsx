@@ -15,19 +15,25 @@ const Contact = () => {
           src={assets.contact_image}
           alt=""
         />
-        <div>
-          <p>OUR OFFICE</p>
-          <p>
+        <div className="flex flex-col justify-center items-start gap-6">
+          <p className="font-semibold text-lg text-gray-600">OUR OFFICE</p>
+          <p className="text-gray-500">
             2387 Willms Station <br />
             Suite 340, Washington, USA
           </p>
-          <p>
+          <p className="text-gray-500">
             TEL: 00970012791 <br />
             Email: appointmed@gmail.com
           </p>
-          <p>Career at AppontMed</p>
-          <p>Learn more about our teams and job openings</p>
-          <button>Explore jobs</button>
+          <p className="font-semibold text-lg text-gray-600 ">
+            Career at Appoint-Med.
+          </p>
+          <p className="text-gray-500">
+            Learn more about our teams and job openings
+          </p>
+          <button className="border border-black px-8 py-3 text-sm hover:bg-black hover:text-white transition-all duration-500">
+            Explore jobs
+          </button>
         </div>
       </div>
     </div>
